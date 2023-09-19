@@ -112,7 +112,7 @@ function newLevel()
 
 function gameOver()
 {
-    $("h1").text("Game Over, Press Any Key to Restart");
+    $("h1").text("Game Over, Max Level: " + currentLevel);
     activeGame = false;
 
     gameCount++;
