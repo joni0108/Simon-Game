@@ -3,6 +3,8 @@ var currentUserList = [];
 var currentLevel = 0;
 var activeGame = false;
 var gameCount = 0;
+let lastClickTime = 0;
+const debounceDelay = 1000;
 
 //GAME RULES
 
@@ -38,6 +40,13 @@ function startGame() {
     $(".btn").on("touchstart", function() {
         //Handle button pressed
 
+        const currentTime = new Date().getTime();
+    
+
+        if (currentTime - lastClickTime > debounceDelay) {
+
+        console.log('Touch event detected');
+        
         switch(this.textContent)
         {
             case "A": handleClickedButton(1); break;
@@ -45,6 +54,11 @@ function startGame() {
             case "C": handleClickedButton(3); break;
             case "D": handleClickedButton(4); break;
         }
+
+        // Update the last click time
+        lastClickTime = currentTime;
+        }
+        
     });
 }
 
