@@ -35,7 +35,17 @@ function startGame() {
         }
     });
 
-    _debug();
+    $(".btn").on("touchstart", function() {
+        //Handle button pressed
+
+        switch(this.textContent)
+        {
+            case "A": handleClickedButton(1); break;
+            case "B": handleClickedButton(2); break;
+            case "C": handleClickedButton(3); break;
+            case "D": handleClickedButton(4); break;
+        }
+    });
 }
 
 function setLevelText(level)
@@ -156,7 +166,7 @@ function getKeyByPos(pos)
 }
 
 $(document).keypress(clickTouchEvent);
-$(document).on("touch", clickTouchEvent);
+$(document).on("touchstart", clickTouchEvent);
 
 function clickTouchEvent()
 {
